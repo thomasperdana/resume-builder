@@ -4,7 +4,7 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Button as HeroUIButton, ButtonProps as HeroUIButtonProps } from '../../packages/heroui/components/button/src';
+import { Button as HeroUIButton, ButtonProps as HeroUIButtonProps } from '@heroui/react';
 import { motionPresets } from './motion';
 
 interface EnhancedButtonProps extends HeroUIButtonProps {

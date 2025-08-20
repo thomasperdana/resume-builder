@@ -4,7 +4,7 @@
 
 import React from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Modal as HeroUIModal, ModalProps as HeroUIModalProps } from '../../packages/heroui/components/modal/src';
+import { Modal as HeroUIModal, ModalProps as HeroUIModalProps } from '@heroui/react';
 
 interface MotionModalProps extends HeroUIModalProps {
   animationPreset?: 'fade' | 'slideUp' | 'slideDown' | 'scale' | 'rotate';

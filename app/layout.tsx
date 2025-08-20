@@ -1,44 +1,48 @@
-import './globals.css';
-import type { Metadata, Viewport } from 'next';
-import { Manrope } from 'next/font/google';
-import { getUser, getTeamForUser } from '@/lib/db/queries';
-import { SWRConfig } from 'swr';
+import './globals.css'
+import type { Metadata, Viewport } from 'next'
+import { Inter } from 'next/font/google'
+import { AuthProvider } from '@/lib/auth'
+import { ThemeProvider } from '@/lib/theme'
+import { Toaster } from 'react-hot-toast'
 
 export const metadata: Metadata = {
-  title: 'Next.js SaaS Starter',
-  description: 'Get started quickly with Next.js, Postgres, and Stripe.'
-};
+  title: 'AI Resume Builder - Create Professional Resumes with AI',
+  description: 'Build stunning resumes with AI-powered tools. Generate summaries, cover letters, optimize for ATS, and prepare for interviews.'
+}
 
 export const viewport: Viewport = {
   maximumScale: 1
-};
+}
 
-const manrope = Manrope({ subsets: ['latin'] });
+const inter = Inter({ subsets: ['latin'] })
 
 export default function RootLayout({
   children
 }: {
-  children: React.ReactNode;
+  children: React.ReactNode
 }) {
   return (
-    <html
-      lang="en"
-      className={`bg-white dark:bg-gray-950 text-black dark:text-white ${manrope.className}`}
-    >
-      <body className="min-h-[100dvh] bg-gray-50">
-        <SWRConfig
-          value={{
-            fallback: {
-              // We do NOT await here
-              // Only components that read this data will suspend
-              '/api/user': getUser(),
-              '/api/team': getTeamForUser()
-            }
-          }}
-        >
-          {children}
-        </SWRConfig>
+    <html lang="en" suppressHydrationWarning>
+      <body className={`${inter.className} min-h-screen transition-colors duration-500`}>
+        <ThemeProvider>
+          <AuthProvider>
+            <div className="min-h-screen bg-gradient-to-br from-background via-background to-secondary/20">
+              {children}
+            </div>
+            <Toaster
+              position="top-right"
+              toastOptions={{
+                duration: 4000,
+                style: {
+                  background: 'hsl(var(--card))',
+                  color: 'hsl(var(--card-foreground))',
+                  border: '1px solid hsl(var(--border))',
+                },
+              }}
+            />
+          </AuthProvider>
+        </ThemeProvider>
       </body>
     </html>
-  );
+  )
 }

@@ -16,9 +16,10 @@ const Avatar = React.forwardRef<HTMLDivElement, AvatarProps>(
     React.Children.forEach(children, (child) => {
       if (React.isValidElement(child)) {
         if (child.type === AvatarImage) {
-          src = child.props.src;
+          src = (child.props as AvatarImageProps).src;
         } else if (child.type === AvatarFallback) {
-          fallback = typeof child.props.children === 'string' ? child.props.children : undefined;
+          const props = child.props as AvatarFallbackProps;
+          fallback = typeof props.children === 'string' ? props.children : undefined;
         }
       }
     });

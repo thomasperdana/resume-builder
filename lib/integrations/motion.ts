@@ -1,10 +1,9 @@
 /**
  * Integrated Mono Repo - Motion Integration
- * This module provides enhanced motion capabilities combining Framer Motion and Motion One
+ * This module provides enhanced motion capabilities using Framer Motion
  */
 
-import { motion } from 'framer-motion';
-import { animate, stagger, timeline } from '../packages/motion/motion/src';
+import { motion, AnimatePresence } from 'framer-motion';
 
 // Enhanced motion presets
 export const motionPresets = {
@@ -71,6 +70,4 @@ export const motionUtils = {
 };
 
 // Re-export motion libraries
-export { motion, AnimatePresence } from 'framer-motion';
-export { animate, stagger, timeline } from '../packages/motion/motion/src';
-export * from '../packages/motion/framer-motion/src';
+export { motion, AnimatePresence };

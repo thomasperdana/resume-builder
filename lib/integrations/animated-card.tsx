@@ -4,7 +4,7 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Card as HeroUICard, CardProps as HeroUICardProps } from '../../packages/heroui/components/card/src';
+import { Card as HeroUICard, CardProps as HeroUICardProps } from '@heroui/react';
 import { motionPresets } from './motion';
 
 interface AnimatedCardProps extends HeroUICardProps {
